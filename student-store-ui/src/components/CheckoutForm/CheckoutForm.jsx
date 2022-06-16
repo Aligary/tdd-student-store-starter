@@ -1,10 +1,10 @@
 import * as React from "react"
-import "./CheckoutFrom.css"
+import "./CheckoutForm.css"
 
-export default function CheckoutFrom() {
+export default function CheckoutForm() {
   return (
-    <div className="CheckoutFrom">
-      <p>CheckoutFrom</p>
+    <div className="CheckoutForm">
+      <p>CheckoutForm</p>
     </div>
   )
 }

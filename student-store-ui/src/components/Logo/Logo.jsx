@@ -1,10 +1,12 @@
 import * as React from "react"
 import "./Logo.css"
+import logo from './logo.jpg'
+import {Link} from "react-router-dom"
 
 export default function Logo() {
   return (
-    <div className="Logo">
-      <p>Logo</p>
+    <div className="logo">
+      <Link to="/"> <img src={logo} width="25" alt="logo" /> </Link>
     </div>
   )
 }
