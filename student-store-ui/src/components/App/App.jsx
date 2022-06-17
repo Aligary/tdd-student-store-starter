@@ -31,8 +31,8 @@ export default function App() {
     .then((e) => {
       setProducts(e.data.products)
     })
-    .catch((error) => {
-      setError(error)
+    .catch(() => {
+      setError("Error")
     })
   }
 
@@ -72,7 +72,7 @@ export default function App() {
           <Sidebar />
           <Routes> 
             <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
-            <Route path="/products/:productId" element={<ProductDetail />}/>
+            <Route path="/products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />

@@ -9,7 +9,7 @@ export default function ProductGrid(props) {
         props.products.map((e, index) => {
           return <ProductCard 
             key={index}
-            product={e.products}
+            product={e}
             productId={e.id}
             quantity=""
             handleAddItemToCart={props.handleAddItemToCart} 
