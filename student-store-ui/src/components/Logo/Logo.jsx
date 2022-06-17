@@ -1,6 +1,6 @@
 import * as React from "react"
 import "./Logo.css"
-import logo from './logo.jpg'
+import logo from '../img/logo.jpg'
 import {Link} from "react-router-dom"
 
 export default function Logo() {

@@ -30,7 +30,6 @@ export default function App() {
     const res = await axios.get("https://codepath-store-api.herokuapp.com/store")
     .then((e) => {
       setProducts(e.data.products)
-      console.log(products)
     })
     .catch((error) => {
       setError(error)
@@ -62,6 +61,7 @@ export default function App() {
     
   }
 
+  console.log(1,products)
   return (
     <div className="app">
       <BrowserRouter>
@@ -71,7 +71,7 @@ export default function App() {
           </nav>
           <Sidebar />
           <Routes> 
-            <Route path="/" element={<Home products={products} handleOnToggle={handleOnToggle}/>}/>
+            <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
             <Route path="/products/:productId" element={<ProductDetail />}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
