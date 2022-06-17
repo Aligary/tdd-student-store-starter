@@ -66,10 +66,16 @@ export default function App() {
     <div className="app">
       <BrowserRouter>
         <main>
-          <nav>
-            <Navbar />
-          </nav>
-          <Sidebar />
+          <Navbar />
+          <Sidebar 
+            isOpen={isOpen}
+            shoppingCart={shoppingCart}
+            products={products}
+            checkoutForm={checkoutForm}
+            hadnleOnCheckoutFormChange={hadnleOnCheckoutFormChange}
+            handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+            handleOnToggle={handleOnToggle}
+          />
           <Routes> 
             <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
             <Route path="/products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
