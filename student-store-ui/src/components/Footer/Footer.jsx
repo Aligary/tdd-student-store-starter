@@ -3,8 +3,10 @@ import "./Footer.css"
 
 export default function Footer() {
   return (
-    <nav className="Footer">
-      <p>Footer</p>
-    </nav>
+    <div className="footer">
+      <div className="content">
+        
+      </div>
+    </div>
   )
 }

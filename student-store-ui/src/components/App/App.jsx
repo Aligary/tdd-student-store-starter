@@ -13,17 +13,18 @@ import Footer from "../Footer/Footer"
 import { useState, useEffect } from "react"
 import "./App.css"
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom"
+import About from "../About/About"
 import axios from "axios"
+import Contact from "../Contact/Contact"
+
 
 export default function App() {
   let [products, setProducts] = useState([]);
   let [isFetching, setIsFetching] = useState(false);
   let [error, setError] = useState("");
   let [isOpen , setIsOpen ] = useState(false);
-  let [shoppingCart , setShoppingCart ] = useState([]);
+  let [shoppingCart , setShoppingCart ] = useState({id: 0, quantity: 0});
   let [checkoutForm  , setCheckoutForm  ] = useState("");
-
-
 
   async function getProducts() {
     setIsFetching(true)
@@ -46,7 +47,6 @@ export default function App() {
   }
 
   function handleAddItemToCart(productId) {
-    
   }
 
   function handleRemoveItemFromCart(productId) {
@@ -60,6 +60,9 @@ export default function App() {
   function handleOnSubmitCheckoutForm() {
     
   }
+
+  
+
 
   console.log(1,products)
   return (
@@ -81,6 +84,8 @@ export default function App() {
             <Route path="/products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <About />
+          <Contact />
           <Footer />
         </main>
       </BrowserRouter>
