@@ -21,7 +21,7 @@ export default function ProductCard(props) {
       {
         <div className="media">
           <Link to={link}>
-            <img src={image} alt={name} width="200"/>
+            <img src={image} alt={name} width="200" height="200"/>
           </Link>
         </div>
       }

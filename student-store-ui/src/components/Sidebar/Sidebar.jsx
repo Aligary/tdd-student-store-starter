@@ -11,7 +11,11 @@ export default function Sidebar(props) {
       {
         open ? 
         <div className="sidebarOpen">
-          <ShoppingCart />
+          <ShoppingCart 
+            isOpen={open}
+            products={props.products}
+            shoppingCart=""
+          />
           <CheckoutForm />
         </div>
         :

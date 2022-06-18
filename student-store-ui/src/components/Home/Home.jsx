@@ -2,35 +2,46 @@ import * as React from "react"
 import "./Home.css"
 import Hero from "../Hero/Hero"
 import ProductGrid from "../ProductGrid/ProductGrid"
+import SearchBar from "../SearchBar/SearchBar"
+import { CatFilter } from "../CatFilter/CatFilter"
+import { useState } from "react"
 
 export default function Home(props) {
+
+  const[selectedCategory, setSelectedCategory] = useState("all categories");
+  const categories = ["All Categories", "Clothing", "Food", "Accessories", "Tech"]
+  let active;
   return (
     <div className="home">
       <Hero />
-      <ProductGrid 
+      <SearchBar />
+      {categories.map((e) => {
+            active = (e == selectedCategory ? true : false)
+            return <CatFilter 
+                      handleAddItemToCart={props.handleAddItemToCart} 
+                      handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+                      products={props.products} 
+                      key={e} 
+                      label={e}
+                      category={selectedCategory} 
+                      isActive={active}
+                      onClick={() => {
+                        setSelectedCategory(e)
+                        
+                      }}
+                      
+                    />
+        })}
+      {
+        selectedCategory ? <ProductGrid 
+        category={selectedCategory}
         products={props.products} 
         handleAddItemToCart={props.handleAddItemToCart} 
         handleRemoveItemFromCart={props.handleRemoveItemFromCart}
       />
-      <div className="about">
-        <div className="content">
-          <h3>About</h3>
-        </div>
-        <div className="summary">
-          <div className="text">
-            <p>
-              The codepath student store offers great products at great prices from a great team and for a great cause.
-            </p>
-            <p>
-              We've searched far and wide for items that perk the interests of even the most eccentric students and decided to offer them all here in one place.
-            </p>
-            <p>
-            All proceeds go towards bringing high quality CS education to college students around the country.
-            </p>
-          </div>
-          <div></div>
-        </div>
-      </div>
+      : null
+      }
+      
     </div>
   )
 }
