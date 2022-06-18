@@ -1,0 +1,24 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex: 1;
+    list-style-type: none;
+    height: 40px;
+    font-weight: 500;
+    transition: all .2s ease;
+    
+}
+.btn {
+    cursor: pointer;
+    transition: all .1s ease;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-weight: 500;
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: solid 2px transparent;
+    transition: all .2s ease;
+}

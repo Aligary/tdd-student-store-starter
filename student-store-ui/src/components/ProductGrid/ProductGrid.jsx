@@ -12,9 +12,10 @@ export default function ProductGrid(props) {
 
   console.log(currentCat)
   return (
-    <div className="product-grid">
+    <div className="content">
       <h1>Best Selling Products</h1>
-      {
+        <div className="product-grid">
+        {
         currentCat.map((e, index) => {
           return <ProductCard 
             key={index}
@@ -25,8 +26,9 @@ export default function ProductGrid(props) {
             handleRemoveItemFromCart={props.handleRemoveItemFromCart}
             showDescription={false}
           />
-        })
-      }
+        })}
+        </div>
+      
     </div>
   )
 }

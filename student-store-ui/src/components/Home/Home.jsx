@@ -15,6 +15,7 @@ export default function Home(props) {
     <div className="home">
       <Hero />
       <SearchBar />
+      <div className="filter-card">
       {categories.map((e) => {
             active = (e == selectedCategory ? true : false)
             return <CatFilter 
@@ -32,6 +33,7 @@ export default function Home(props) {
                       
                     />
         })}
+      </div>
       {
         selectedCategory ? <ProductGrid 
         category={selectedCategory}
