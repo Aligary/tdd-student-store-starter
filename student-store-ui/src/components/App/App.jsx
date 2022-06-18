@@ -60,11 +60,6 @@ export default function App() {
   function handleOnSubmitCheckoutForm() {
     
   }
-
-  
-
-
-  console.log(1,products)
   return (
     <div className="app">
       <BrowserRouter>
