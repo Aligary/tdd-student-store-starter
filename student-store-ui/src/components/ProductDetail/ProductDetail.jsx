@@ -26,7 +26,6 @@ export default function ProductDetail(props) {
 
   return (
     <div className="product-detail">
-      <p>ProductDetail</p>
       {
         product!=null ? 
         <ProductView  

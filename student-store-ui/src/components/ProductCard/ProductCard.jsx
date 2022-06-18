@@ -2,6 +2,9 @@ import * as React from "react"
 import "./ProductCard.css"
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom"
 
+import minus from '../img/minus.png'
+import plus from '../img/plus.png'
+
 export default function ProductCard(props) {
   let link = "/products/" + props.product?.id
   let id = props.product?.id
@@ -28,12 +31,12 @@ export default function ProductCard(props) {
 
       {
         <button className="add" onClick={props.handleAddItemToCart(id)}>
-          +
+          <img src={plus} alt="plus" width="60"/>
         </button>
       }
       {
         <button className="remove" onClick={props.handleRemoveItemFromCart(id)}>
-          -
+          <img src={minus} alt="plus" width="30"/>
         </button>
       }
       {
