@@ -3,18 +3,14 @@ import "./SearchBar.css"
 
 export default function SearchBar(props) {
 
+  
+  console.log(12, props.search)
 
   return (
-    <nav className="sub-navbar">
-        <div className="content">
-            <div className="row">
-                <div className="search-bar">
-                    <input type="text" name="search" placeholder="Search" />
-                </div>
-            </div>
-        </div>
-
-        
-    </nav>
+    <div className="search-bar">
+      <div className="input">
+        <textarea type="text" name="search" placeholder="Search" value={props.search} onChange={props.handleOnChange}/>
+      </div>
+    </div>
   )
 }

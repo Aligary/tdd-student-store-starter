@@ -11,10 +11,14 @@ export default function Home(props) {
   const[selectedCategory, setSelectedCategory] = useState("all categories");
   const categories = ["All Categories", "Clothing", "Food", "Accessories", "Tech"]
   let active;
+
+  function handleOnSearchChange(e) {
+    props.setSearch(e.target.value)
+  }
   return (
     <div className="home">
       <Hero />
-      <SearchBar />
+      <SearchBar setSearch={props.setSearch} search={props.search} handleOnChange={handleOnSearchChange}/>
       <div className="filter-card">
       {categories.map((e) => {
             active = (e == selectedCategory ? true : false)

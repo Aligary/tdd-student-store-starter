@@ -25,6 +25,7 @@ export default function App() {
   let [isOpen , setIsOpen ] = useState(false);
   let [shoppingCart , setShoppingCart ] = useState({id: 0, quantity: 0});
   let [checkoutForm  , setCheckoutForm  ] = useState("");
+  let [search, setSearch] = useState("");
 
   async function getProducts() {
     setIsFetching(true)
@@ -45,6 +46,8 @@ export default function App() {
     else
       setIsOpen(true)
   }
+
+
 
   function handleAddItemToCart(productId) {
   }
@@ -75,7 +78,7 @@ export default function App() {
             handleOnToggle={handleOnToggle}
           />
           <Routes> 
-            <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
+            <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} search={search} setSearch={setSearch}/>}/>
             <Route path="/products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
