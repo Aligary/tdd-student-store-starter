@@ -18,7 +18,14 @@ export default function Home(props) {
   return (
     <div className="home">
       <Hero />
-      <SearchBar setSearch={props.setSearch} search={props.search} handleOnChange={handleOnSearchChange}/>
+      <SearchBar 
+        setSearch={props.setSearch} 
+        search={props.search} 
+        handleOnChange={handleOnSearchChange}
+        products={props.products} 
+        handleAddItemToCart={props.handleAddItemToCart} 
+        handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+      />
       <div className="filter-card">
       {categories.map((e) => {
             active = (e == selectedCategory ? true : false)

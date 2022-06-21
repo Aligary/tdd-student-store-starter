@@ -4,13 +4,25 @@ import "./ProductGrid.css"
 
 export default function ProductGrid(props) {
 
-  let currentCat = props.category.toLowerCase() === "all categories"
-  ?  props.products
-  : props.products.filter((e) => {
-    return (e.category.toLowerCase()==props.category.toLowerCase()) ? e : null
+  let currentCat=""
+  if(props.activeSearch)
+  {
+    currentCat = props.search.toLowerCase() === ""
+    ?  props.products
+    : props.products.filter((e) => {
+    return (e.name.toLowerCase().includes(props.search.toLowerCase())) ? e : null
   })
+  }
+  else
+  {
+    currentCat = props.category.toLowerCase() === "all categories"
+    ?  props.products
+    : props.products.filter((e) => {
+      return (e.category.toLowerCase()==props.category.toLowerCase()) ? e : null
+    })
+  }
+  console.log(5,currentCat)
 
-  console.log(currentCat)
   return (
     <div className="content">
       <h1>Best Selling Products</h1>
