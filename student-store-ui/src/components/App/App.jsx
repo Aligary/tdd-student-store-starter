@@ -23,8 +23,8 @@ export default function App() {
   let [isFetching, setIsFetching] = useState(false);
   let [error, setError] = useState("");
   let [isOpen , setIsOpen ] = useState(false);
-  let [shoppingCart , setShoppingCart ] = useState({id: 0, quantity: 0});
-  let [checkoutForm  , setCheckoutForm  ] = useState("");
+  let [shoppingCart , setShoppingCart ] = useState([]);
+  let [checkoutForm  , setCheckoutForm  ] = useState();
   let [search, setSearch] = useState("");
 
   async function getProducts() {
@@ -50,35 +50,61 @@ export default function App() {
 
 
   function handleAddItemToCart(productId) {
+      if (shoppingCart.findIndex(e => e.itemId == productId) !== -1){
+        shoppingCart[shoppingCart.findIndex(e => e.itemId == productId)].quantity += 1;
+      } 
+      else {
+        setShoppingCart(state => [...state, {itemId: productId, quantity: 1}])
+      }
+
   }
 
   function handleRemoveItemFromCart(productId) {
-    
+    if (shoppingCart.findIndex(e => e.itemId == productId) !== -1){
+      shoppingCart[shoppingCart.findIndex(e => e.itemId == productId)].quantity -= 1;
+    } 
+    if(shoppingCart[shoppingCart.findIndex(e => e.itemId == productId)].quantity === 0) {
+      shoppingCart.splice([shoppingCart.findIndex(e => e.itemId == productId)], 1)
+    }
   }
 
-  function hadnleOnCheckoutFormChange(name, value) {
-
+  function handleOnCheckoutFormChange(name, value) {
+    setCheckoutForm({name: {name}, value: {value}})
   }
   
   function handleOnSubmitCheckoutForm() {
-    
+  //   axios.post("https://codepath-store-api.herokuapp.com/store", {
+  //     user: checkoutForm,
+  //     shoppingCart: ""
+
+  // })
   }
+
+
   return (
     <div className="app">
       <BrowserRouter>
         <main>
           <Navbar />
-          {/* <Sidebar 
+          <Sidebar 
             isOpen={isOpen}
             shoppingCart={shoppingCart}
             products={products}
             checkoutForm={checkoutForm}
-            hadnleOnCheckoutFormChange={hadnleOnCheckoutFormChange}
+            handleOnCheckoutFormChange={handleOnCheckoutFormChange}
             handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
             handleOnToggle={handleOnToggle}
-          /> */}
+          />
           <Routes> 
-            <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} search={search} setSearch={setSearch}/>}/>
+            <Route path="/" element={
+              <Home 
+                products={products} 
+                handleAddItemToCart={handleAddItemToCart} 
+                handleRemoveItemFromCart={handleRemoveItemFromCart} 
+                search={search} 
+                setSearch={setSearch}
+                shoppingCart={shoppingCart}/>
+                }/>
             <Route path="/products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>

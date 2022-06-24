@@ -145,5 +145,32 @@
       "price": 999.99
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "id": 1,
+      "name": "ali",
+      "email": "ali@codepath.org",
+      "order": [
+        {
+          "id": 1,
+          "quantity": 3
+        }
+      ],
+      "total": 3.229875,
+      "createdAt": "2022-06-24T18:08:39.797Z"
+    },
+    {
+      "id": 1,
+      "name": "ali",
+      "email": "ali@codepath.org",
+      "order": [
+        {
+          "id": 2,
+          "quantity": 6
+        }
+      ],
+      "total": "9.79",
+      "createdAt": "2022-06-24T18:10:03.017Z"
+    }
+  ]
 }

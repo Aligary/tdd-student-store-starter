@@ -11,7 +11,22 @@ export default function ProductCard(props) {
   let name = props.product?.name
   let price = (props.product?.price.toFixed(2))
   let image = props.product?.image
-  let description = props.product?.description
+  let description = props.product?.description  
+  let shoppingCart = props.shoppingCart
+  let product = props.product
+  let prodQuantity 
+  
+
+  shoppingCart
+  ?
+  shoppingCart.map((e) => {
+    product.map((element) => {
+      if (e.itemId == element.id) {
+        prodQuantity = e.quantity
+      }
+    })
+  })
+  : null
   return (
     <div className="product-card">
       <h4 className="product-name">{name}</h4>
@@ -30,17 +45,17 @@ export default function ProductCard(props) {
       }
 
       {
-        <button className="add" onClick={props.handleAddItemToCart(id)}>
+        <button className="add" onClick={() => props.handleAddItemToCart(id)}>
           <img src={plus} alt="plus" width="60"/>
         </button>
       }
       {
-        <button className="remove" onClick={props.handleRemoveItemFromCart(id)}>
+        <button className="remove" onClick={() => props.handleRemoveItemFromCart(id)}>
           <img src={minus} alt="plus" width="30"/>
         </button>
       }
       {
-        <p className="product-quantity">?</p>
+        <p className="product-quantity">a{prodQuantity}</p>
       }
 
     </div>

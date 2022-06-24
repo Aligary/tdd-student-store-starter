@@ -21,8 +21,6 @@ export default function ProductGrid(props) {
       return (e.category.toLowerCase()==props.category.toLowerCase()) ? e : null
     })
   }
-  console.log(5,currentCat)
-
   return (
     <div className="content">
       <h1>Best Selling Products</h1>
@@ -33,7 +31,7 @@ export default function ProductGrid(props) {
             key={index}
             product={e}
             productId={e.id}
-            quantity=""
+            quantity={props.shoppingCart}
             handleAddItemToCart={props.handleAddItemToCart} 
             handleRemoveItemFromCart={props.handleRemoveItemFromCart}
             showDescription={false}

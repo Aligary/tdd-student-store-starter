@@ -25,6 +25,7 @@ export default function Home(props) {
         products={props.products} 
         handleAddItemToCart={props.handleAddItemToCart} 
         handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+        shoppingCart={props.shoppingCart}
       />
       <div className="filter-card">
       {categories.map((e) => {
@@ -51,6 +52,7 @@ export default function Home(props) {
         products={props.products} 
         handleAddItemToCart={props.handleAddItemToCart} 
         handleRemoveItemFromCart={props.handleRemoveItemFromCart}
+        shoppingCart={props.shoppingCart}
       />
       : null
       }

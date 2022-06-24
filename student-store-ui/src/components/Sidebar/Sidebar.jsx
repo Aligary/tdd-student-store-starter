@@ -14,7 +14,7 @@ export default function Sidebar(props) {
           <ShoppingCart 
             isOpen={open}
             products={props.products}
-            shoppingCart=""
+            shoppingCart={props.shoppingCart}
           />
           <CheckoutForm />
         </div>
