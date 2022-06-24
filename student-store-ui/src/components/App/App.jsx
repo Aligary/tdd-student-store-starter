@@ -26,6 +26,7 @@ export default function App() {
   let [shoppingCart , setShoppingCart ] = useState([]);
   let [checkoutForm  , setCheckoutForm  ] = useState();
   let [search, setSearch] = useState("");
+  let [subTotal, setSubTotal] = useState(0);
 
   async function getProducts() {
     setIsFetching(true)
@@ -56,6 +57,11 @@ export default function App() {
       else {
         setShoppingCart(state => [...state, {itemId: productId, quantity: 1}])
       }
+      const product = products.find(product => {
+        return product.id == productId;
+      });
+      setSubTotal(subTotal + product.price)
+    
 
   }
 
@@ -66,6 +72,11 @@ export default function App() {
     if(shoppingCart[shoppingCart.findIndex(e => e.itemId == productId)].quantity === 0) {
       shoppingCart.splice([shoppingCart.findIndex(e => e.itemId == productId)], 1)
     }
+
+    const product = products.find(product => {
+      return product.id == productId;
+    });
+    setSubTotal(subTotal - product.price)
   }
 
   function handleOnCheckoutFormChange(name, value) {
