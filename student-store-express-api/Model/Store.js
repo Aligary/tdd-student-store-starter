@@ -16,8 +16,6 @@ class Store{
     }
 
     static async createOrder(order) {
-
-
       const newOrder = {...order}
       storage.get("purchases").push(newOrder).write()
       return newOrder
