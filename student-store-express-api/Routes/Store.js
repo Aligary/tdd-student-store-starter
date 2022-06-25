@@ -36,12 +36,13 @@ router.post("/", async(req, res, next) => {
     try{
         const newCart = req.body.shoppingCart
         const newUser = req.body.user
-        if(!newCart) {
+        if(!newCart || !newUser) {
             return next(new BadRequestError("No order found in request."))
         }
-        if(!newUser) {
+        if(!newCart.quantity || !newCart.itemId) {
             return next(new BadRequestError("No user found in request."))
         }
+
         id += 1;
         let price = 0;
         let totalPrice = 0.0;

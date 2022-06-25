@@ -55,7 +55,7 @@ export default function ProductCard(props) {
         </button>
       }
       {
-        <p className="product-quantity">a{prodQuantity}</p>
+        <p className="product-quantity">{prodQuantity}</p>
       }
 
     </div>

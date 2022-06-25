@@ -24,9 +24,11 @@ export default function App() {
   let [error, setError] = useState("");
   let [isOpen , setIsOpen ] = useState(false);
   let [shoppingCart , setShoppingCart ] = useState([]);
-  let [checkoutForm  , setCheckoutForm  ] = useState();
+  let [checkoutForm  , setCheckoutForm  ] = useState({name: "", email: ""});
   let [search, setSearch] = useState("");
   let [subTotal, setSubTotal] = useState(0);
+  let [success, setSuccess] = useState(false)
+  const [receipt, setReceipt] = useState({});
 
   async function getProducts() {
     setIsFetching(true)
@@ -80,15 +82,28 @@ export default function App() {
   }
 
   function handleOnCheckoutFormChange(name, value) {
-    setCheckoutForm({name: {name}, value: {value}})
+    if(name == "name") {
+      setCheckoutForm(state => ({...state, [name]: value }))
+    }
+    if(name == "email") {
+      setCheckoutForm(state => ({...state, [name]: value }))
+    }
   }
   
   function handleOnSubmitCheckoutForm() {
-  //   axios.post("https://codepath-store-api.herokuapp.com/store", {
-  //     user: checkoutForm,
-  //     shoppingCart: ""
-
-  // })
+   axios.post("http://localhost:3001/store",{
+      user: checkoutForm, 
+      shoppingCart: shoppingCart
+    }).then((result) => {
+      console.log(3,result.data)
+      setReceipt(result.data.purchase.receipt);
+      setShoppingCart([])
+      setCheckoutForm({name: "", email: ""})
+      setSuccess(true)
+    }).catch((err) => {
+      setError(err)
+      setSuccess(false)
+    })
   }
 
 
@@ -105,6 +120,7 @@ export default function App() {
             handleOnCheckoutFormChange={handleOnCheckoutFormChange}
             handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
             handleOnToggle={handleOnToggle}
+            success={success}
           />
           <Routes> 
             <Route path="/" element={
