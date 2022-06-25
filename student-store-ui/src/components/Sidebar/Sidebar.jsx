@@ -16,7 +16,15 @@ export default function Sidebar(props) {
             products={props.products}
             shoppingCart={props.shoppingCart}
           />
-          <CheckoutForm />
+          <CheckoutForm 
+            isOpen={open}
+            products={props.products}
+            shoppingCart={props.shoppingCart}
+            checkoutForm={props.checkoutForm}
+            handleOnCheckoutFormChange={props.handleOnCheckoutFormChange}
+            handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm}
+            success={props.success}
+          />
         </div>
         :
         <div className="sidebarClosed"></div>
