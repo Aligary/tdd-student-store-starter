@@ -8,8 +8,8 @@ class Store{
       return products
     }
 
-    static async fetchById(id) {
-      const product = storage.get("products").find({id}).value()
+    static async fetchById(itemId) {
+      const product = storage.get("products").find({itemId}).value()
 
       return product
         

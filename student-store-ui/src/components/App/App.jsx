@@ -30,10 +30,11 @@ export default function App() {
   let [success, setSuccess] = useState(false)
   const [receipt, setReceipt] = useState({});
 
-  async function getProducts() {
+   function getProducts() {
     setIsFetching(true)
-    const res = await axios.get("https://codepath-store-api.herokuapp.com/store")
+    const res =  axios.get("http://localhost:3001/store")
     .then((e) => {
+      console.log(e.data)
       setProducts(e.data.products)
     })
     .catch(() => {
@@ -90,19 +91,37 @@ export default function App() {
     }
   }
   
-  function handleOnSubmitCheckoutForm() {
-   axios.post("http://localhost:3001/store",{
+  async function handleOnSubmitCheckoutForm() {
+    // try{
+    //   const res = await axios.post(`http://localhost:3001/store`, {
+    //     user: checkoutForm, 
+    //     shoppingCart: shoppingCart
+    //   }) 
+    //   console.log(3,res.data)
+    //   if(res?.data?.purchase?.receipt) {
+    //     setReceipt(res.data.purchase.receipt);
+    //     setShoppingCart([])
+    //     setCheckoutForm({name: "", email: ""})
+    //     setSuccess(true)
+    //   }
+    // }catch(err) {
+    //   console.log({err})
+    //   setError(err)
+    //   setSuccess(false)
+    // }
+    console.log(checkoutForm)
+    console.log(shoppingCart)
+
+    const res = await axios.post("http://localhost:3001/store", {
+      shoppingCart: shoppingCart,
       user: checkoutForm, 
-      shoppingCart: shoppingCart
-    }).then((result) => {
-      console.log(3,result.data)
-      setReceipt(result.data.purchase.receipt);
-      setShoppingCart([])
-      setCheckoutForm({name: "", email: ""})
-      setSuccess(true)
-    }).catch((err) => {
-      setError(err)
-      setSuccess(false)
+      
+    })
+    .then((e) => {
+      setProducts(e.data.purchase)
+    })
+    .catch(() => {
+      setError("Error")
     })
   }
 
