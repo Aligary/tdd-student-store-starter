@@ -36,18 +36,29 @@ router.post("/", async(req, res, next) => {
     try{
         const newCart = req.body.shoppingCart
         const newUser = req.body.user
-        if(!newCart || !newUser) {
+        if(!newCart) {
             return next(new BadRequestError("No order found in request."))
         }
-        if(!newCart.quantity || !newCart.itemId) {
+        if(!newUser) {
             return next(new BadRequestError("No user found in request."))
         }
+
+        newCart.map((e) => {
+            
+        })
+
+        newCart.map((e) => {
+            if(!e.quantity || !e.itemId) {
+            return next(new BadRequestError("No id/quantity found in request."))
+        }
+        })
+        
 
         id += 1;
         let price = 0;
         let totalPrice = 0.0;
         newCart.map((e) => {
-            price = storage.get("products").find({id:e.id}).value().price
+            price = storage.get("products").find({id:e.itemId}).value().price
             totalPrice = totalPrice + (price*e.quantity)
         })
 
