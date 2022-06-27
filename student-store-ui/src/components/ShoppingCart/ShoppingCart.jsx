@@ -1,8 +1,8 @@
 import * as React from "react"
 import "./ShoppingCart.css"
 
+
 export default function ShoppingCart(props) {
-  console.log(props.shoppingCart)
 
   let subTotal = 0;
   let tax = 0;
