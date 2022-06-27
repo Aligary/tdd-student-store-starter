@@ -6,6 +6,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 
 
 ![](https://raw.githubusercontent.com/Aligary/tdd-student-store-starter/main/studentStoreGif.gif)
+![](https://raw.githubusercontent.com/Aligary/tdd-student-store-starter/main/studentStoreGif.gif)
 
 
 ### Application Features
@@ -21,7 +22,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 - [x] User can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] User can click the '-' button on a product cart to increment that product in the shopping cart.
 - [x] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
-- [ ] User can check out, and can view receipt upon completion.
+- [x] User can check out, and can view receipt upon completion.
 
 #### Stretch Features
 
@@ -57,7 +58,7 @@ The following specifications were met on the Express backend and the React front
       - [x] Each object in the array should have two fields:
         - [x] The `itemId` field should store the `id` of the item being purchased.
         - [x] The `quantity` field should store a number representing how many of that item the user is purchasing.
-    - [] `checkoutForm` - the user's information that will be sent to the API when they checkout.
+    - x] `checkoutForm` - the user's information that will be sent to the API when they checkout.
   - [x] Leverage the `useEffect` hook to ensure that when the `App.jsx` component is mounted to the screen...
     - [x] It should make a `GET` request to the API's `/store` endpoint with the `axios.get` method.
     - [x] When the request completes successfully, it should store the `products` returned by the response in state.
@@ -84,12 +85,12 @@ The following specifications were met on the Express backend and the React front
           - [x] `value` - the new value to set for that input
         - [x] It should update the `checkoutForm` object with the new value from the correct input(s)
       - [x] The **`handleOnSubmitCheckoutForm`** function. When called...
-        - [ ] It should submit the user's order to the API
-        - [ ] To submit the user's order, it should leverage the `axios.post` method to send a `POST` request to the `/store` endpoint.
-        - [ ] The body of that `POST` request should be an object with two fields:
-          - [ ] The `user` field:
-            - [ ] Should be an object containing `name` and `email` properties
-            - [ ] Each property should be set to the correct value found in the `checkoutForm`
+        - [x] It should submit the user's order to the API
+        - [x] To submit the user's order, it should leverage the `axios.post` method to send a `POST` request to the `/store` endpoint.
+        - [x] The body of that `POST` request should be an object with two fields:
+          - [x] The `user` field:
+            - [x] Should be an object containing `name` and `email` properties
+            - [x] Each property should be set to the correct value found in the `checkoutForm`
           - [x] The `shoppingCart` field:
             - [x] Should contain the user's order formatted as an array of objects.
             - [x] Each object in the array should have two fields:
@@ -238,8 +239,8 @@ The following specifications were met on the Express backend and the React front
     - [x] It should contain the text `Checkout`.
     - [x] When clicked, it should call the `handleOnSubmit` function.
       - [x] If that request fails, the `CheckoutForm` component should display an error message inside an element with the `className` of `error`.
-      - [ ] If the `POST` request is successful...
-        - [ ] The `CheckoutForm` component should display a success message that contains the text `"Success!"` inside an element with the `className` of `success`.
+      - [x] If the `POST` request is successful...
+        - [x] The `CheckoutForm` component should display a success message that contains the text `"Success!"` inside an element with the `className` of `success`.
         - [x] The `shoppingCart` should be emptied
         - [x] The `checkoutForm` should be reset to its default state.
 
@@ -279,7 +280,7 @@ The following specifications were met on the Express backend and the React front
           - [x] `createdAt` - a string representation of the date and time when the order was placed
         - **optional**:
           - [ ] `receipt` - text describing the order (what might go on a receipt)
-      - [ ] It should then send a JSON response back to the client with the new purchase like so: `{ "purchase": purchase }`. The response should have a `201` status code for a resource created action.
+      - [x] It should then send a JSON response back to the client with the new purchase like so: `{ "purchase": purchase }`. The response should have a `201` status code for a resource created action.
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?

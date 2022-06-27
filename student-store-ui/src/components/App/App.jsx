@@ -28,14 +28,16 @@ export default function App() {
   let [search, setSearch] = useState("");
   let [subTotal, setSubTotal] = useState(0);
   let [success, setSuccess] = useState(false)
-  const [receipt, setReceipt] = useState({});
+  let [receipt, setReceipt] = useState({
+    id: 0, name: "", email: "", order: {}, total:0.0
+  });
 
    function getProducts() {
     setIsFetching(true)
     const res =  axios.get("http://localhost:3001/store")
     .then((e) => {
-      console.log(e.data)
       setProducts(e.data.products)
+      setIsFetching(false)
     })
     .catch(() => {
       setError("Error")
@@ -92,25 +94,6 @@ export default function App() {
   }
   
   async function handleOnSubmitCheckoutForm() {
-    // try{
-    //   const res = await axios.post(`http://localhost:3001/store`, {
-    //     user: checkoutForm, 
-    //     shoppingCart: shoppingCart
-    //   }) 
-    //   console.log(3,res.data)
-    //   if(res?.data?.purchase?.receipt) {
-    //     setReceipt(res.data.purchase.receipt);
-    //     setShoppingCart([])
-    //     setCheckoutForm({name: "", email: ""})
-    //     setSuccess(true)
-    //   }
-    // }catch(err) {
-    //   console.log({err})
-    //   setError(err)
-    //   setSuccess(false)
-    // }
-    console.log(checkoutForm)
-    console.log(shoppingCart)
 
     const res = await axios.post("http://localhost:3001/store", {
       shoppingCart: shoppingCart,
@@ -118,11 +101,26 @@ export default function App() {
       
     })
     .then((e) => {
-      setProducts(e.data.purchase)
+      console.log(e.data.purchase.order)
+      setReceipt({
+        id: e.data.purchase.id, 
+        name: e.data.purchase.name, 
+        email: e.data.purchase.email,
+        order: e.data.purchase.order, 
+        total: e.data.purchase.total
+      })
+      console.log(receipt)
+      setShoppingCart([])
+      setCheckoutForm({name: "", email: ""})
+      setSuccess(true)
+      
     })
     .catch(() => {
+      console.log("err")
       setError("Error")
+      setSuccess(false)
     })
+    
   }
 
 
@@ -140,6 +138,11 @@ export default function App() {
             handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
             handleOnToggle={handleOnToggle}
             success={success}
+            receiptId={receipt.id}
+            receiptName={receipt.name}
+            receiptEmail={receipt.email}
+            receiptOrder={receipt.order}
+            receiptTotal={receipt.total}
           />
           <Routes> 
             <Route path="/" element={

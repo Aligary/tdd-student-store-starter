@@ -2,7 +2,6 @@ import * as React from "react"
 import "./CheckoutForm.css"
 
 export default function CheckoutForm(props) {
-  console.log(props.checkoutForm)
   return (
     <div className="checkout-form">
       <div className="input-field">
@@ -25,8 +24,22 @@ export default function CheckoutForm(props) {
         </div>
       </div>
       {props.success?
-      <div className="success">
-        Success!
+      <div className="checkout-success">
+        <div className="card">
+          <header className="card-head">
+            <h4 className="card-title">Receipt</h4>
+          </header>
+          <section className="card-body">
+            <p className="header">
+              Showing receipt for {props.receiptName} available at {props.receiptEmail}:
+            </p>
+            <ul className="purchase">
+              <li>
+                After taxes and fees were applied, the total comes out to ${(props.receiptTotal)}
+              </li>
+            </ul>
+          </section>
+        </div>
       </div>
       :null}
       

@@ -24,6 +24,11 @@ export default function Sidebar(props) {
             handleOnCheckoutFormChange={props.handleOnCheckoutFormChange}
             handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm}
             success={props.success}
+            receiptId={props.receiptId}
+            receiptName={props.receiptName}
+            receiptEmail={props.receiptEmail}
+            receiptOrder={props.receiptOrder}
+            receiptTotal={props.receiptTotal}
           />
         </div>
         :
