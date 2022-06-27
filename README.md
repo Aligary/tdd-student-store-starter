@@ -6,7 +6,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 
 
 ![](https://raw.githubusercontent.com/Aligary/tdd-student-store-starter/main/studentStoreGif.gif)
-![](https://raw.githubusercontent.com/Aligary/tdd-student-store-starter/main/studentStoreGif.gif)
+![](https://raw.githubusercontent.com/Aligary/tdd-student-store-starter/main/proj3Demo.gif)
 
 
 ### Application Features
